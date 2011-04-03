@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <script>
+      var showForHttp = true;
+
+      // Called when the url of a tab changes.
+      function checkForValidUrl(tabId, changeInfo, tab) {
+        if (tab.url.indexOf('httpsv://') != 0 &&
+            (showForHttp || tab.url.indexOf('https') > -1)) {
+          // ... show the page action.
+          chrome.pageAction.show(tabId);
+        }
+      };
+
+      // Called when user clicks on the page action icon.
+      function redirectToHttpsv(tab) {
+        var httpsvUrl = tab.url.replace(/^https?:\/\//i, 'httpsv://');
+        chrome.tabs.update(tab.id, {'url': httpsvUrl});
+      };
+
+      chrome.tabs.onUpdated.addListener(checkForValidUrl);
+      chrome.pageAction.onClicked.addListener(redirectToHttpsv);
+    </script>
+  </head>
+</html>

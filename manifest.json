@@ -1,0 +1,16 @@
+{
+  "name": "TLS Login",
+  "version": "1.0",
+  "description": "Upgrade to TLS-based login authentication.",
+  "background_page": "background.html",
+  "page_action": {
+    "default_icon": "icon-128.png",
+    "default_title": "Log in using TLS"
+  },
+  "permissions": [
+      "tabs"
+  ],
+  "icons" : {
+    "128" : "icon-128.png"
+  }
+}
